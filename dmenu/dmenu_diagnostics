@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Setting the 
+# NOTE: Some of the commands and scripts used here are hardware-specific. If you are not running a system with an Intel CPU, with integrated and discrete NVIDIA graphics, some parts may not work as expected. Also keep in mind that "nvidia-smi" does not function properly with the open-source Noveau drivers to my knowledge.
 GUSE="GPU usage"
 GTEM="GPU temperature"
 DUSE="Disk usage"
