@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Setting the 
+GUSE="GPU usage"
+GTEM="GPU temperature"
+DUSE="Disk usage"
+RUSE="RAM usage"
+CUSE="CPU usage"
+BACK="Backlight level"
+
+RES=$(printf "$GUSE\n$GTEM\n$DUSE\n$RUSE\n$CUSE\n$BACK" | dmenu -p Diagnostics:)
+
+
+if [ x"$RES" = x"$GUSE" ]; then
+      notify-send "$GUSE" \
+      $(~/Scripts/py/gpu-usage.py) # This script can be found in the "python" section of my Scripts repository.
+   elif [ x"$RES" = x"$GTEM" ]; then
+      notify-send "$GTEM" \
+      $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)°C
+   elif [ x"$RES" = x"$DUSE" ]; then
+      notify-send "$DUSE" \
+      "$(df --output=pcent /dev/nvme0n1p2 | grep -wv Use%) ($(df -H --output=used /dev/nvme0n1p2 | grep -wv Used | tr -d " "))"
+   elif [ x"$RES" = x"$RUSE" ]; then
+      notify-send "$RUSE" \
+         $(~/Scripts/sh/memory.sh) # This script can be found in the "shell" section of my Scripts repository.
+   elif [ x"$RES" = x"$CUSE" ]; then
+      notify-send "$CUSE" \
+         $(grep 'cpu ' /proc/stat | awk '{cpu_usage=($2+$4)*100/($2+$4+$5)} END {printf "%0.2f%",  cpu_usage}')
+   elif [ x"$RES" = x"$BACK" ]; then
+      notify-send "$BACK" $(cat /sys/class/backlight/intel_backlight/brightness)
+   else
+      exit 1
+   fi

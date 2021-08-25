@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# If you wish to use a terminal emulator other than alacritty, simply replace "alacritty -e" with the command to execute a command in a new terminal window. For example, in you are using kitty, replace it with just the command "kitty".
+dmenu_path | dmenu -p "Run in terminal:"| xargs alacritty -e
+

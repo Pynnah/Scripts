@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# NOTE: For obvious reasons, this only works for .desktop files stored in "/usr/share/applications". If your files are stored elsewhere, you can easily change the path listed or add multiple.
+ls /usr/share/applications | sed 's/\.desktop//' | dmenu -p Drun: | xargs gtk-launch
+
