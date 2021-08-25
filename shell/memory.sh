@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# NOTE: This script is not mine. I have used it for longer than I care to remember, though, so I do not know who the original author is. If you recognize it, please inform me so that I can credit the person who created the script, as it has proven quite handy.
+# NOTE: This script is not mine. I have used it for longer than I care to remember, though, so I do not know who the original author is. If you recognize it, please inform me so that I can credit the person who created the script, as it has proven quite handy to me.
 
 case "$1" in
     --popup)
