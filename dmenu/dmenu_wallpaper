@@ -2,6 +2,6 @@
 
 #NOTE: I use the "xwallpaper" command-line wallpaper utility. If you wish to substitute another wallpaper tool such as fehbg, just replace "xwallpaper --zoom" with your preferred command.
 
-ls ~/Backgrounds | grep -wv WALLPAPER | dmenu -p Wallpaper: | xargs -I {} cat ~/Backgrounds/{} > ~/Backgrounds/WALLPAPER
+ls ~/Backgrounds | grep -wv WALLPAPER | dmenu -p Wallpaper: | xargs -I {} cp ~/Backgrounds/{} ~/Backgrounds/WALLPAPER
 
 xwallpaper --zoom ~/Backgrounds/WALLPAPER
