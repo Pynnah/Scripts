@@ -1,0 +1,13 @@
+#!/bin/sh
+
+browse() {
+   FILE=$(ls | dmenu -p File:) 
+   if [ -d "$FILE" ]; then
+      cd $FILE
+      browse
+   else
+      xdg-open $FILE
+   fi
+}
+
+browse
