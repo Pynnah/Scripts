@@ -19,6 +19,9 @@ This script acts as a screenshot menu, giving a choice between 3 options: Taking
 ### dmenu_wallpaper
 This script allows the user to dynamically change their wallpaper using `xwallpaper`. It searches for files in `~/Backgrounds`, and creates a copy of the selection which is passed into `xwallpaper`. This allows the last selection to be persistent across boots, which means you needn't select the same wallpaper every time you boot into your environment.
 
+### dmenu_files
+This script acts as a simple, unobtrusive file browser. It performs only two functions: changing directories, and opening files with `xdg-open`. If you wish to go up a directory level, you must type ".." or "../" manually, as it does not display with the default `ls` command. You could, however, change the script to use `ls -a` to displat all hidden files and directories.
+
 
 ## Python scripts
 These are a collection of various scripts written in Python. Some are standalone items made for fun, while others may be made for integration into other projects or programs.
