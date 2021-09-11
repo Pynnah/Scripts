@@ -14,7 +14,7 @@ This script allows the user to select from one of several pieces of system infor
 This script acts as a typical application launcher; it displays a list of .desktop applications and launches to selected one using `gtk-launch`. It does not pull applications from anywhere other than `/usr/share/applications`, as that is the only location I use.
 
 ### dmenu_scrot
-This script acts as a screenshot menu, giving a choice between 3 options: Taking a screenshot of the full screen, the currently focused window, or a region selected by draggin the cursor. It takes screenshots using `scrot`, and moves them into `~/Captures`.
+This script acts as a screenshot menu, giving a choice between 3 options: Taking a screenshot of the full screen, the currently focused window, or a region selected by draggin the cursor. It also gives you a second menu to name your file. The file extension is not needed; it is already integrated in the script so all you have to type is the first part of the file name.
 
 ### dmenu_wallpaper
 This script allows the user to dynamically change their wallpaper using `xwallpaper`. It searches for files in `~/Backgrounds`, and creates a copy of the selection which is passed into `xwallpaper`. This allows the last selection to be persistent across boots, which means you needn't select the same wallpaper every time you boot into your environment.

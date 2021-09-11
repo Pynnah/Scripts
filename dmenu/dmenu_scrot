@@ -1,17 +1,19 @@
 #!/bin/sh
 
-# NOTE: I use the "scrot" command-line screenshot utility. If you wish to substitute a different command-line program such as ImageMagick, simply replace the entire command with your preferred tool.
-WHL="Capture entire screen"
+# This script uses the "scrot" screenshot utility to capture the screen. If you wish to use a different tool, simply replace all the lines beginning with "scrot" with your command-line screenshot utility of choice.
+WHOLE="Capture entire screen"
 WIN="Capture focused window"
 SEL="Capture selection of screen"
-RES=$(printf "$WHL\n$WIN\n$SEL" | dmenu -p Screenshot:)
 
-if [ x"$RES" = x"$WHL" ]; then
-      scrot -e 'mv $f ~/Captures/' # Take a screenshot of the entire screen, and then move said screenshot to the "Captures" directory in user's home.
+RES=$(printf "Capture entire screen\nCapture focused window\nCapture selection of screen" | dmenu -i -p Screenshot:)
+NAME=$(printf | dmenu -p "File name:").png # This line determines that all screenshots be saved as a PNG. If you wish to save them as a JPG, GIF, or any other format that scrot supports, all you have to do is change the ".png" extension to whatever you choose.
+
+if [ x"$RES" = x"$WHOLE" ]; then
+   scrot -q 100 ~/Captures/$NAME # This line (and the two corresponding lines that follow this one) determines that screenshots will be saved at 100% the image quality of the source, and that they be placed in the ~/Captures/ directory. You can change either of these values to be whatever you wish.
    elif [ x"$RES" = x"$WIN" ]; then
-      scrot -ue 'mv $f ~/Captures/' # Take a screenshot of the currently-focused window, and then move said screenshot to the "Captures" directory in user's home.
+      scrot -uq 100 ~/Captures/$NAME
    elif [ x"$RES" = x"$SEL" ]; then
-      scrot -se 'mv $f ~/Captures/' # Take a screenshot of an area selected with the cursor, and then move said screenshot to the "Captures" directory in user's home.
+      scrot -sq 100 ~/Captures/$NAME
    else
       exit 1
    fi
